@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'file:///E:/gitHubPro/flutter_app_demo/lib/page/main/main.dart';
+import 'package:flutter_app_demo/https/Api.dart';
+import 'package:flutter_app_demo/https/http_util.dart';
+import 'package:flutter_app_demo/model/user_entity.dart';
+import 'package:flutter_app_demo/page/main/main.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginView extends StatefulWidget {
@@ -76,11 +79,20 @@ class _LoginViewState extends State {
   }
 
   _login() {
-    print(_userControler.text);
-    print(_passwordControler.text);
+    focusNode1.unfocus();
+    focusNode2.unfocus();
+    Future<dynamic> future =
+        HttpUtil.responseJsonParse<UserEntity>(Api.LOGIN_URL,context,"正在登陆，请稍等...");
+    future.then((value) => _skipMain(value));
+  }
 
-    Navigator.push(context, MaterialPageRoute(builder: (context) {
-      return new MainView();
-    }));
+  _skipMain(value) {
+    if (value != null) {
+      print((value as UserEntity).name);
+      Navigator.pop(context);
+      Navigator.push(context, MaterialPageRoute(builder: (context) {
+        return new MainView();
+      }));
+    }
   }
 }

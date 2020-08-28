@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/scheduler/ticker.dart';
+import 'package:flutter_app_demo/page/jq/JqDetailView.dart';
 import 'package:flutter_app_demo/page/jq/JqInputView.dart';
 
 /**
@@ -50,7 +51,7 @@ class _MainJqDetailState extends State<MainJqDetailView>
         controller: _tabController,
         children: <Widget>[
           JqInputView(),
-          JqInputView(),
+          JqDetailView(),
           JqInputView(),
         ],
       ),

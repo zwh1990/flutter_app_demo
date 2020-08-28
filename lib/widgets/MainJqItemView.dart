@@ -4,8 +4,9 @@ import 'package:flutter_app_demo/page/main/MainJqDetailView.dart';
 
 class MainJqItemView extends StatefulWidget {
   final String title;
+  final String phone;
 
-  MainJqItemView({Key key, @required this.title}) : super(key: key);
+  MainJqItemView({Key key, @required this.title,@required this.phone}) : super(key: key);
 
   @override
   _MainJqItemViewState createState() => new _MainJqItemViewState();
@@ -35,7 +36,7 @@ class _MainJqItemViewState extends State<MainJqItemView> {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 5),
               child: Text(
-                "手机号:" + "123456789",
+                "手机号:" + widget.phone,
                 style: TextStyle(fontSize: 14, color: Colors.orange),
               ),
             ),
